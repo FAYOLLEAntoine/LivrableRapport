@@ -1,3 +1,4 @@
+FROM docker.io/aiidateam/aiida-core-with-services:latest AS build 
 
 ARG proxy
 ARG workers
@@ -9,7 +10,7 @@ LABEL org.opencontainers.image.authors="pthibaud@users.noreply.github.com"
 RUN apt-get update && apt-get upgrade -y && apt-get dist-upgrade -y && apt-get autoclean && apt-get autoremove -y 
 RUN apt-get install wget git gcc gfortran g++ libblas-dev liblapack-dev libfftw3-dev \
     cmake libxml2-dev libnetcdff-dev libxc-dev python3 python3-dev pip libzstd-dev \
-  libopenmpi-dev sudo -y
+    libopenmpi-dev sudo -y
 
 # Quantum ESPRESSO
 WORKDIR /home/dft
